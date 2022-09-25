@@ -1,0 +1,22 @@
+
+
+.Login h1 {
+    margin: 10px 0 15px 0;
+}
+
+.login_form {
+    width: 61.8%;
+}
+
+.login_form span {
+color: orange;
+}
+
+.validation_rules {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+

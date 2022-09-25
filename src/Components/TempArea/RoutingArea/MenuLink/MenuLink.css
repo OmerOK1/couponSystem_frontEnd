@@ -1,0 +1,15 @@
+.MenuLink {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+
+.MenuLink .active {
+    color: royalblue;
+    border-bottom: 3px solid royalblue;
+    font-weight: 700;
+    font-size: xx-large;
+    text-decoration: dashed;
+}

@@ -1,0 +1,204 @@
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: auto;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: yellow; */
+  gap: 10px;
+
+
+}
+
+
+
+.flex-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-top-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.single-line-only {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  height: 30px;
+}
+
+.flex-row-none-wrap-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* p {
+  padding: 5px;
+  font-size: x-large;
+}
+
+p:first-letter {
+  color: #6db33f;
+  font-size: 50px;
+} */
+
+
+
+
+
+
+.button {
+  height: 30px;
+  width: 100px;
+  transition-duration: 0.4s;
+  background-color: #60625f;
+  color: white;
+}
+
+.button:hover {
+  background-color: white;
+  color: #60625f;
+}
+
+
+.button-success {
+  height: 30px;
+  width: 100px;
+  transition-duration: 0.4s;
+  background-color: #60625f;
+  color: white;
+  cursor: none;
+}
+
+.button-success:hover {
+  background-color: white;
+  color: #6db33f;
+}
+
+.button-success:disabled {
+  height: 30px;
+  width: 100px;
+  transition-duration: 0.4s;
+  background-color: #60625f;
+  color: white;
+  cursor:not-allowed;
+}
+
+.button-danger {
+  height: 30px;
+  width: 100px;
+  transition-duration: 0.4s;
+  background-color: #b33f47;
+  color: white;
+}
+
+.button-danger:hover {
+  background-color: white;
+  /* Green */
+  color: #b33f47;
+}
+
+
+
+.box {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 10px 10px 2px 2px #888888;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.one-line {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+form {
+  text-align: start;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+form span {
+  font-weight: 700;
+  color: red;
+}
+
+form .button-app {
+  text-align: center;
+}
+
+input[type=text], input[type=date], input[type=datetime-local], input[type=number], input[type=email], input[type=password] {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+input[type=number]:disabled {
+  font-weight: 700;
+
+  background-color: #88888880;
+}
+
+label {
+  margin-left: 2px;
+  font-weight: 500;
+  display: inline-block;
+  display: inline-block;
+  text-align: start;
+  color:black;
+}
