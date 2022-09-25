@@ -76,6 +76,7 @@ function UpdateCompany() {
         if (inTimeout) {return;}
         setInTimeout(true);
 
+
         await updateCompanyApi(company, companyId).then((res)=>{
             notify.success(SccMsg.COMPANY_UPDATE_SUCCESS);
             store.dispatch(updateCompanyAction(res.data));
@@ -84,8 +85,7 @@ function UpdateCompany() {
         .catch ((error)=>{
             notify.error(error)
         })
-        setInTimeout(false);
-    }
+        setTimeout(() => setInTimeout(false), 3000);    }
     
 
     return (
@@ -108,12 +108,12 @@ function UpdateCompany() {
                 <br />
 
                 <label htmlFor="email">Email</label>
-                <input {...register("email")} type="email" placeholder="email" id="email" value={company.email} />
+                <input {...register("email")} type="email" placeholder="email" id="email" defaultValue={company.email} />
                 <span className="validation_rules">{errors.email?.message}</span>
                 <br />
 
                 <label htmlFor="password">Password</label>
-                <input  {...register("password")} type="password" placeholder="password" id="password"  value={company.password} />
+                <input  {...register("password")} type="password" placeholder="password" id="password"  defaultValue={company.password} />
                 <span className="validation_rules">{errors.password?.message}</span>
                 <br />
 

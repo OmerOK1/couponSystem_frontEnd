@@ -43,7 +43,7 @@ function AddCustomer() {
   const { register, handleSubmit, formState: { errors, isDirty, isValid } } = 
   useForm<CustomerModel>({ mode: "all", resolver: yupResolver(schema) });
 
-  useEffect(()=>{
+  useEffect(() => {
       if (!store.getState().authReducer.user.token){
           notify.error(ErrMsg.NO_TOKEN);
           navigate("/login");
@@ -65,8 +65,7 @@ function AddCustomer() {
       .catch ((error)=>{
           notify.error(error);
       })
-      setInTimeout(false);
-      
+      setTimeout(() => setInTimeout(false), 3000);      
   }
 
   return <div>

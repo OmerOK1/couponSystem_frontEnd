@@ -103,8 +103,7 @@ function UpdateCoupon() {
       .catch((error) => {
         notify.error(error);
       });
-      setInTimeout(false);
-    
+      setTimeout(() => setInTimeout(false), 3000);    
   };
 
   return (

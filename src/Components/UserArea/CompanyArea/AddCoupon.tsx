@@ -67,8 +67,8 @@ function AddCoupon() {
             console.log(error);
             notify.error(error);
         })
-        setInTimeout(false);
-    }
+        setTimeout(() => setInTimeout(false), 3000);
+        }
     
 
     return (

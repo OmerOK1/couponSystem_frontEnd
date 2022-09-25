@@ -26,9 +26,9 @@ function UpdateCustomer() {
       .customerReducer.customers.find((customer) => customer.id === customerId)
   );
 
-  const getCustomerFromServer = async () => {
+  const getOriginalCustomerFromServer = async () => {
     await getCustomerApi(customerId)
-    .then((res) => {
+      .then((res) => {
         notify.success(SccMsg.CUSTOMER_FETCH_ONE_SUCCESS);
         store.dispatch(addCustomerAction(res.data));
         setCustomer(res.data);
@@ -41,7 +41,7 @@ function UpdateCustomer() {
   };
   (function () {
     if (customer === undefined) {
-      getCustomerFromServer(); //instead of making consistent state
+      getOriginalCustomerFromServer(); //instead of making consistent state
     }
   })();
 
@@ -69,15 +69,12 @@ function UpdateCustomer() {
   });
 
   const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors, isDirty, isValid },
-  } = useForm<CustomerModel>({
-    defaultValues: { ...customer },
-    mode: "all",
-    resolver: yupResolver(schema),
-  });
+    register, handleSubmit, control, formState: { errors, isDirty, isValid }, } =
+    useForm<CustomerModel>({
+      defaultValues: { ...customer },
+      mode: "all",
+      resolver: yupResolver(schema),
+    });
 
   const { dirtyFields } = useFormState({ control });
 
@@ -93,27 +90,25 @@ function UpdateCustomer() {
   }, []);
 
   const updateCustomer = async (customer: CustomerModel) => {
-    if (inTimeout) {return;}
+    if (inTimeout) { return; }
     setInTimeout(true);
-
     await updateCustomerApi(customer, customerId)
       .then((res) => {
         notify.success(SccMsg.CUSTOMER_UPDATE_SUCCESS);
         store.dispatch(updateCustomerAction(res.data));
-        navigate("/customers"); 
+        navigate("/customers");
       })
       .catch((error) => {
         notify.error(error);
       });
-      setInTimeout(false);
-    
+    setTimeout(() => setInTimeout(false), 3000);
   };
 
   return (
     <>
       {customer && (
         <div>
-          <h1>Edit {customer.firstName+" "+ customer.lastName}</h1>
+          <h1>Edit {customer.firstName + " " + customer.lastName}</h1>
           {/* Step 9 - handleSubmit your form  */}
 
           <form
@@ -126,7 +121,7 @@ function UpdateCustomer() {
               type="number"
               name="id"
               id="id"
-              placeholder={"" + customer.id}
+              value={customer.id}
               {...register("id")}
             />
             <br />
@@ -136,7 +131,7 @@ function UpdateCustomer() {
               {...register("firstName")}
               type="firstName"
               placeholder="firstName"
-              value={customer.firstName}
+              defaultValue={customer.firstName}
               id="firstName"
             />
             <span className="validation_rules">
@@ -146,22 +141,14 @@ function UpdateCustomer() {
 
             <label htmlFor="lastName">Last Name</label>
             <input
-              {...register("lastName")}
-              type="lastName"
-              placeholder="last name"
-              value={customer.lastName}
-              id="lastName"
-            />
+              {...register("lastName")} type="lastName" placeholder="last name"
+              defaultValue={customer.lastName} id="lastName" />
             <span className="validation_rules">{errors.lastName?.message}</span>
             <br />
 
             <label htmlFor="email">Email</label>
             <input
-              {...register("email")}
-              type="email"
-              placeholder="email"
-              value={customer.email}
-              id="email"
+              {...register("email")} type="email" placeholder="email" defaultValue={customer.email} id="email"
             />
             <span className="validation_rules">{errors.email?.message}</span>
             <br />
@@ -171,7 +158,7 @@ function UpdateCustomer() {
               {...register("password")}
               type="password"
               placeholder="password"
-              value={customer.email}
+              defaultValue={customer.email}
               id="password"
             />
             <span className="validation_rules">{errors.password?.message}</span>

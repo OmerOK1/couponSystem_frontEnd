@@ -57,8 +57,7 @@ function AddCompany() {
         .catch ((error)=>{
             notify.error(error);
         })
-        setInTimeout(false);
-         
+        setTimeout(() => setInTimeout(false), 3000);         
     }
     
 
