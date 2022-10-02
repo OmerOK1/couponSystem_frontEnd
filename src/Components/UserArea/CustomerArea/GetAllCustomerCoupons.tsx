@@ -53,7 +53,7 @@ function GetAllCustomerCoupons() {
 
     const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setCategory(e.currentTarget.value);
-        let filteredCoupons = store.getState().companyReducer.coupons;
+        let filteredCoupons = store.getState().customerReducer.customerCoupons;
         if (maxPrice !== 0) {
             filteredCoupons = 
             filteredCoupons.filter(
@@ -72,7 +72,7 @@ function GetAllCustomerCoupons() {
 
     const handleMaxPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxPrice(Number(e.currentTarget.value));
-        let filteredCoupons = store.getState().companyReducer.coupons;
+        let filteredCoupons = store.getState().customerReducer.customerCoupons;
         console.log(category);
         if (category !== "ALL") {
         filteredCoupons= 
