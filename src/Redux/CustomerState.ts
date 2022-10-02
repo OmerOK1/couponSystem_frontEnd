@@ -10,16 +10,16 @@ export class CustomerState {
 
 // Step 2 - Define all possible actions for your application state
 export enum CustomerActionType {
-  GetCustomers = "GetCustomers",
-  GetCoupons = "GetCoupons",
-  AddCustomer = "AddCustomer",
-  PurchaseCoupon = "PurchaseCoupon", // TODO: this acts as get coupon from coupons[], should add that as well as change this to add coupon to customerCoupons[]
-  UpdateCustomer = "UpdateCustomer",
-  DeleteCustomer = "DeleteCustomer",
-  ClearCustomers = "ClearCustomers",
-  GetCustomerCoupons = "GetCustomerCoupons",
-  ClearCoupons = "ClearCoupons",
-  ClearCustomerCoupons = "ClearCustomerCoupons",
+  GetCustomers = "getCustomers",
+  GetCoupons = "getCoupons",
+  AddCustomer = "addCustomer",
+  PurchaseCoupon = "purchaseCoupon",
+  UpdateCustomer = "updateCustomer",
+  DeleteCustomer = "deleteCustomer",
+  ClearCustomers = "clearCustomers",
+  GetCustomerCoupons = "getCustomerCoupons",
+  ClearCoupons = "clearCoupons",
+  ClearCustomerCoupons = "clearCustomerCoupons",
 }
 
 // Step 3 - Define Action Interface to describe actionAction & payload if needed
@@ -94,6 +94,15 @@ export function getCustomerCouponsAction(
   };
 }
 
+export function getCouponsAction(
+  coupons: CouponModel[]
+): CustomerAction {
+  return {
+    type: CustomerActionType.GetCoupons,
+    payload: coupons,
+  };
+}
+
 // Step 5 - Reducer function perform the required action
 
 export function CustomerReducer(
@@ -103,8 +112,9 @@ export function CustomerReducer(
   const newState = { ...currentState };
 
   switch (action.type) {
-    case CustomerActionType.PurchaseCoupon: // <= this is what you are looking for, Future Omer
+    case CustomerActionType.PurchaseCoupon: 
       const coupon = newState.coupons.find((coupon) => coupon.id === action.payload);
+      coupon.amount--;
       newState.customerCoupons.push(coupon); // this alleviates the need to return the coupon from the server
       break;
     case CustomerActionType.GetCustomers:
@@ -112,6 +122,9 @@ export function CustomerReducer(
       break;
     case CustomerActionType.GetCustomerCoupons:
       newState.customerCoupons = action.payload; 
+      break;
+      case CustomerActionType.GetCoupons:
+      newState.coupons = action.payload; 
       break;
     case CustomerActionType.DeleteCustomer:
       newState.customers = newState.customers.filter(

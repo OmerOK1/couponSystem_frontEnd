@@ -10,6 +10,7 @@ import { FaEdit, FaInfoCircle } from "react-icons/fa";
 export interface CompanyCardProps {
   company: CompanyModel;
   to: string;
+  isSelf: boolean;
 }
 
 function CompanyCard(props: CompanyCardProps): JSX.Element {

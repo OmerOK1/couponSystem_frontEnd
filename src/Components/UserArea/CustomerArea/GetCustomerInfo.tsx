@@ -10,12 +10,12 @@ import store from "../../../Redux/Store";
 import notify, { ErrMsg, SccMsg } from "../../../Services/Notification";
 import { addCustomerAction } from "../../../Redux/CustomerState";
 import CustomerInfoCard from "../../SharedArea/Cards/CustomerInfoCard/CustomerInfoCard";
+import { getCustomerInfoApi } from "../../../WebApi/CustomerApi";
 
-export default function GetCustomer() {
-  const requiredType = ClientType.ADMINISTRATOR; // TODO: this can be changed to make generic for customer get self info
+export default function GetCustomerInfo() {
+  const requiredType = ClientType.CUSTOMER;
   const navigate = useNavigate();
-  const params = useParams();
-  const customerId = +(params.id );
+  const customerId = JSON.parse(localStorage.getItem('user')).id;
 
   const [customer, setCustomer] = useState<CustomerModel>(
     store
@@ -23,7 +23,7 @@ export default function GetCustomer() {
       .customerReducer.customers.find((customer) => customer.id === customerId) 
   );
   const getCustomerFromServer = async () => {
-    await getCustomerApi(customerId)
+    await getCustomerInfoApi()
     .then((res) => {
         notify.success(SccMsg.CUSTOMER_FETCH_ONE_SUCCESS);
         store.dispatch(addCustomerAction(res.data));
@@ -32,7 +32,7 @@ export default function GetCustomer() {
 
       .catch((error) => {
         notify.error(error);
-        navigate("/customers"); //TODO
+        navigate("/customers");
       });
   };
   (function () {
@@ -58,7 +58,7 @@ export default function GetCustomer() {
     <>
     {
       customer ? 
-      <CustomerInfoCard customer={customer} isSelf={false} to={"/customers/view/" + customerId} />
+      <CustomerInfoCard customer={customer} isSelf={true} to={"/customers/view/" + customerId} />
        : 
        <span>oops, there's a problem getting your information</span>
     }

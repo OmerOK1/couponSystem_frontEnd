@@ -23,6 +23,10 @@ import UpdateCoupon from "../../UserArea/CompanyArea/UpdateCoupon";
 import GetAllCompanyCoupons from "../../UserArea/CompanyArea/GetAllCompanyCoupons";
 import GetCompanyInfo from "../../UserArea/CompanyArea/GetCompanyInfo";
 import RemoveCoupon from "../../UserArea/CompanyArea/RemoveCoupon";
+import GetCustomerInfo from "../../UserArea/CustomerArea/GetCustomerInfo";
+import GetAllCoupons from "../../UserArea/CustomerArea/GetAllCoupons";
+import PurchaseCoupon from "../../UserArea/CustomerArea/PurchaseCoupon";
+import GetAllCustomerCoupons from "../../UserArea/CustomerArea/GetAllCustomerCoupons";
 
 function Routing(): JSX.Element {
     return (
@@ -58,6 +62,15 @@ function Routing(): JSX.Element {
                 
                 
                 {/* //Company/
+                //customer ---------------------------------------------------------------- */}
+                <Route path="/customer/view" element={<GetCustomerInfo/>} /> 
+                <Route path="/customer/coupons" element={<GetAllCoupons/>} /> 
+                <Route path="/customer/coupons/owned" element={<GetAllCustomerCoupons/>} /> 
+
+
+
+
+                {/* //Customer / ----------------------------------------------------------------
                 //Authentication/ ---------------------------------------------------------------- */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />

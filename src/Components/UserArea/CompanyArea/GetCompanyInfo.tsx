@@ -59,7 +59,7 @@ export default function GetCompany() {
     <>
       {
         company ? 
-        <CompanyInfoCard company={company} to={"/companies/view/" + companyId} />
+        <CompanyInfoCard company={company} isSelf={true} to={"/companies/view/" + companyId} />
          : 
          <span>oops, there's a problem getting your information</span>
       }

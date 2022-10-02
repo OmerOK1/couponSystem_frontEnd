@@ -59,7 +59,7 @@ function GetAllCompanies() {
                     companies.length > 0 ?
                     (<div className="companies_gallery">
                         {companies.map((company)=>(
-                        <CompanyCard key={company.id} company={company} to={"/companies"}/>
+                        <CompanyCard key={company.id} isSelf={false} company={company} to={"/companies"}/>
                         ))}
                     </div>) : 
                     (<div className="empty_view">

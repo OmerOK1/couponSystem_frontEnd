@@ -23,34 +23,38 @@ function CustomerInfoCard(props: CustomerCardProps) {
             <br />
             <span>name: {props.customer.lastName}</span>
             <br />
-            <span>email: {props.customer.email}</span> 
+            <span>email: {props.customer.email}</span>
             <br />
           </Card.Text>
-          <Link
-            className="remove"
-            to={"/customers/remove/" + props.customer.id}
-          >
-            <Button variant="primary">
-              <BsTrash />
-              delete
-            </Button>
-          </Link>
 
-          <Link
-            className="update"
-            to={"/customers/update/" + props.customer.id}
-          >
-            <Button variant="primary">
-              <FaEdit />
-              update
-            </Button>
-          </Link>
-          <Link className="back" to={"/customers"}>
-            <Button variant="primary">
-              <FaInfoCircle />
-              back
-            </Button>
-          </Link>
+          {!props.isSelf && (
+            <div>
+              <Link
+                className="remove"
+                to={"/customers/remove/" + props.customer.id}
+              >
+                <Button variant="primary">
+                  <BsTrash />
+                  delete
+                </Button>
+              </Link>
+
+              <Link
+                className="update"
+                to={"/customers/update/" + props.customer.id}
+              >
+                <Button variant="primary">
+                  <FaEdit />
+                  update
+                </Button>
+              </Link>
+              <Link className="back" to={"/customers"}>
+                <Button variant="primary">
+                  <FaInfoCircle />
+                  back
+                </Button>
+              </Link>
+            </div>)}
         </Card.Body>
       </Card>
     </div>

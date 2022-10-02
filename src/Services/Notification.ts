@@ -19,6 +19,7 @@ export enum SccMsg {
     CUSTOMER_FETCH_ONE_SUCCESS = 'customer fetched successfully',
     COUPON_FETCH_ONE_SUCCESS = 'coupon fetched successfully',
     COUPONS_FETCH_SUCCESS = 'coupons fetched successfully',
+    MY_COUPONS_FETCH_SUCCESS = 'purchase history fetched successfully',
     COUPON_PURCHASE_SUCCESS = 'coupon purchased successfully',
 }
 
@@ -60,7 +61,6 @@ class Notify {
 
     private extractMsg(err: any): string {
 
-        console.log("moshe ", err?.response?.data?.value)
         if (typeof err?.response?.data?.value === 'string') { //Backend exact error
             return err.response.data.value;
         }

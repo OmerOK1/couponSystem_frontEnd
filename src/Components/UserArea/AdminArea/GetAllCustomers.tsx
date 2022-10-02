@@ -59,7 +59,7 @@ function GetAllCustomers() {
                     customers.length > 0 ?
                     (<div className="customers_gallery">
                         {customers.map((customer)=>(
-                        <CustomerCard key={customer.id} customer={customer} to={"/customers"}/>
+                        <CustomerCard key={customer.id} customer={customer} isSelf={false} to={"/customers"}/>
                         ))}
                     </div>) : 
                     (<div className="empty_view">

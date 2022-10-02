@@ -23,13 +23,21 @@ function Menu(): JSX.Element {
       {type === ClientType.COMPANY && (
         <CustomLink to="/company/coupons">Coupons</CustomLink>
       )}
-      {type === ClientType.COMPANY && (
+      {/* {type === ClientType.COMPANY && (
         <CustomLink to="/company/coupon/add">Add new Coupon</CustomLink>
-      )}
+      )} */}
       {type === ClientType.COMPANY && (
         <CustomLink to="/company/view">profile</CustomLink>
       )}
-      
+      {type === ClientType.CUSTOMER && (
+        <CustomLink to="/customer/view">profile</CustomLink>
+      )}
+      {type === ClientType.CUSTOMER && (
+        <CustomLink to="/customer/coupons">find coupons</CustomLink>
+      )}
+      {type === ClientType.CUSTOMER && (
+        <CustomLink to="/customer/coupons/owned">my coupons</CustomLink>
+      )}
        
     </div>
   );

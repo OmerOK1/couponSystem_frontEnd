@@ -28,8 +28,11 @@ function AddCoupon() {
             .min(new Date(Date.now()-86400_000), "start date in the past")
             .typeError("must specify a starting date")
             .required("must specify a starting date"),
-            endDate:yup.date()
-            .min(new Date(), "")
+            endDate:yup.date().
+            min(
+                yup.ref('startDate'),
+                "end date can't be before start date"
+              )
             .required("end date required")
             .nullable().default(()=>new Date(Date.now()+6.048e+8))
             .typeError("must specify an expiration date"),

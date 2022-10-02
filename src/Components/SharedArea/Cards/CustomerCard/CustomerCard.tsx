@@ -10,6 +10,7 @@ import { FaEdit, FaInfoCircle } from "react-icons/fa";
 export interface CustomerCardProps {
   customer: CustomerModel;
   to: string;
+  isSelf: boolean;
 }
 
 function CustomerCard(props: CustomerCardProps): JSX.Element {
