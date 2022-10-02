@@ -1,2 +1,2 @@
 # couponSystem_frontend
- front end application for coupon purchase website.
+ TypeScript based frontend application for a coupon purchasing website, using React Redux.
