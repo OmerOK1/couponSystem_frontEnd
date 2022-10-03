@@ -56,11 +56,14 @@ function UpdateCoupon() {
         .min(new Date(Date.now()-86400_000), "start date in the past")
         .typeError("must specify a starting date")
         .required("must specify a starting date"),
-        endDate:yup.date()
-        .min(new Date(), "")
-        .required("end date required")
-        .nullable().default(()=>new Date(Date.now()+6.048e+8))
-        .typeError("must specify an expiration date"),
+        endDate:yup.date().
+            min(
+                yup.ref('startDate'),
+                "end date can't be before start date"
+              )
+            .required("end date required")
+            .nullable().default(()=>new Date(Date.now()+6.048e+8))
+            .typeError("must specify an expiration date"),
         amount:yup.number().integer().min(1).required("amount required"),
         price:yup.number().min(0).required("price required"),
         img:yup.string(),
