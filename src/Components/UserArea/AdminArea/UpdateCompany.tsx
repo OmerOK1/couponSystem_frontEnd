@@ -64,6 +64,7 @@ function UpdateCompany() {
         }
         if (!(store.getState().authReducer.user.clientType === requiredType)){
             notify.error(ErrMsg.UNAUTHORIZED_ACTION);
+            
             navigate("/login");
         }
         if (companyId === 0) {
@@ -75,7 +76,7 @@ function UpdateCompany() {
     const updateCompany = async (company: CompanyModel)=> {
         if (inTimeout) {return;}
         setInTimeout(true);
-
+        console.log(company);
 
         await updateCompanyApi(company, companyId).then((res)=>{
             notify.success(SccMsg.COMPANY_UPDATE_SUCCESS);
@@ -83,9 +84,9 @@ function UpdateCompany() {
             navigate("/companies");
         })
         .catch ((error)=>{
-            notify.error(error)
+            notify.error(error);
         })
-        setTimeout(() => setInTimeout(false), 3000);    }
+        setTimeout(() => setInTimeout(false), 3000);}
     
 
     return (
@@ -99,11 +100,11 @@ function UpdateCompany() {
 
             <form onSubmit={handleSubmit(updateCompany)} className="add_company_form flex-center-col">
                 <label htmlFor="id" >id number</label>
-                <input disabled={true} type="number" name="id" id="id" placeholder={""+company.id} {...register("id")} />
+                <input disabled={true} type="number" name="id" id="id" defaultValue={company.id} {...register("id")} />
                 <br /> 
 
                 <label htmlFor="name" >Name</label>
-                <input disabled={true} {...register("name")} type="name" id="name" placeholder={company.name} />
+                <input disabled={true} {...register("name")} type="name" id="name" defaultValue={company.name} />
                 <span className="validation_rules">{errors.name?.message}</span>
                 <br />
 

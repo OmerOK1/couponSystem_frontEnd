@@ -3,7 +3,7 @@ import { CompanyModel } from "../Models/CompanyModel";
 import globals from "../Services/globals";
 import tokenAxios from "../Services/InterceptorAxios";
 
-const adminUrl = globals.urls.admin; // todo add app component.
+const adminUrl = globals.urls.admin;
 
 export async function addCompanyApi(company: CompanyModel) {
     return await tokenAxios.post<CompanyModel>(adminUrl+"companies", company)

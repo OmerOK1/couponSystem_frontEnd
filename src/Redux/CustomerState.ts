@@ -114,7 +114,6 @@ export function CustomerReducer(
   switch (action.type) {
     case CustomerActionType.PurchaseCoupon: 
       const coupon = newState.coupons.find((coupon) => coupon.id === action.payload);
-      coupon.amount--;
       newState.customerCoupons.push(coupon); // this alleviates the need to return the coupon from the server
       break;
     case CustomerActionType.GetCustomers:

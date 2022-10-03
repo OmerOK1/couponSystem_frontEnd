@@ -88,19 +88,18 @@ function GetAllCoupons() {
     const handleMaxPriceChange = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxPrice(Number(e.currentTarget.value));
         let filteredCoupons = store.getState().customerReducer.coupons;
-        console.log(category);
         if (category !== "ALL") {
         filteredCoupons= 
             filteredCoupons.filter(
                 (coupon) => { 
-                    return coupon.category.valueOf() === category 
+                    return coupon.category.valueOf() === category;
                 });
             }
         if (Number(e.currentTarget.value) !== 0) {
             filteredCoupons =
                 filteredCoupons.filter(
                     (coupon) => { 
-                        return coupon.price <= Number(e.currentTarget.value)
+                        return coupon.price <= Number(e.currentTarget.value);
                     });
         } 
         setCoupons(filteredCoupons);
