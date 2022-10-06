@@ -38,7 +38,7 @@ function UpdateCoupon() {
       .catch((error) => {
         console.log(error);
         notify.error(error);
-        navigate("/coupons"); //TODO
+        navigate("/coupons");
       });
   };
   (function () {
@@ -101,7 +101,7 @@ function UpdateCoupon() {
       .then((res) => {
         notify.success(SccMsg.COUPON_UPDATE_SUCCESS);
         store.dispatch(updateCouponAction(res.data));
-        navigate("/coupons");
+        navigate("/company/coupons");
       })
       .catch((error) => {
         notify.error(error);
