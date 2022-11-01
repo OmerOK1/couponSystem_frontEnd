@@ -11,7 +11,7 @@ import store from "../../../../Redux/Store";
 import notify, { SccMsg } from "../../../../Services/Notification";
 import { getCompanyApi } from "../../../../WebApi/AdminApi";
 import { getCompanyInfoApi } from "../../../../WebApi/CompanyApi";
-import "./CouponCard.css"
+import ".././CardStyling.css"
 import PurchaseCoupon from "../../../UserArea/CustomerArea/PurchaseCoupon";
 import { boolean } from "yup";
 
@@ -43,8 +43,8 @@ function CouponCard(props: CouponCardProps): JSX.Element {
     (company &&
       <>
         <Card className="coupon-card">
-          <Card.Header><img src={props.coupon.img} /></Card.Header>
-          <Card.Body>
+          <Card.Header><img className="card-image" src={props.coupon.img} alt="coupon img" /></Card.Header>
+          <Card.Body> 
             <Card.Title>{props.coupon.name}</Card.Title>
             <Card.Text>{props.coupon.description}</Card.Text>
             <Card.Text>{props.coupon.category}</Card.Text>

@@ -15,6 +15,8 @@ import EmptyView from '../../SharedArea/EmptyView/EmptyView';
 import CouponCard from '../../SharedArea/Cards/CouponCard/CouponCard';
 import { CompanyModel } from '../../../Models/CompanyModel';
 import { Category } from '../../../Models/Category';
+import "../styling/CouponList.css";
+
 
 function GetAllCompanyCoupons() {
     const requiredType = ClientType.COMPANY;
@@ -110,6 +112,7 @@ function GetAllCompanyCoupons() {
                     </option>
                 ))}
             </select>
+            <br/>
             <label htmlFor="price">Coupon Price</label>
             <input type="number" min={0} max={999_999} step={1} defaultValue={0} onChange={(e) => handleMaxPriceChange(e)} id="price" name='price' />
             <div className="coupon_list_container">

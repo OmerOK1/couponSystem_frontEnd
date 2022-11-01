@@ -1,4 +1,4 @@
-import "./CompanyInfoCard.css";
+import ".././CardStyling.css";
 import React from 'react';
 import { CompanyCardProps } from "../CompanyCard/CompanyCard";
 import Button from 'react-bootstrap/Button';
